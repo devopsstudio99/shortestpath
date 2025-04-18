@@ -1,0 +1,39 @@
+body {
+    background-color: #f8f9fa;
+    padding-bottom: 2rem;
+}
+
+.card {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#graph-container {
+    min-height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#graph-image {
+    max-width: 100%;
+    max-height: 600px;
+}
+
+.path-node {
+    color: green;
+    font-weight: bold;
+}
+
+.result-path {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.result-length {
+    font-weight: bold;
+    color: #dc3545;
+}
+
+.loading {
+    opacity: 0.5;
+}

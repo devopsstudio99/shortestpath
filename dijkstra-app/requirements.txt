@@ -1,0 +1,6 @@
+Flask==2.2.3
+Werkzeug==2.2.3
+networkx==3.0
+matplotlib==3.7.1
+pillow==9.5.0
+gunicorn==20.1.0

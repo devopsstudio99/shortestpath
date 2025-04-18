@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dijkstra's Shortest Path Algorithm</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container mt-4">
+        <h1 class="text-center mb-4">Dijkstra's Shortest Path Algorithm</h1>
+        
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">Graph Settings</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row mb-3">
+                            <div class="col">
+                                <label for="startNode" class="form-label">Start Node:</label>
+                                <select id="startNode" class="form-select">
+                                    {% for node in nodes %}
+                                    <option value="{{ node }}">Node {{ node }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="col">
+                                <label for="endNode" class="form-label">End Node:</label>
+                                <select id="endNode" class="form-select">
+                                    {% for node in nodes %}
+                                    <option value="{{ node }}" {% if node == nodes|last %}selected{% endif %}>Node {{ node }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="d-grid gap-2">
+                            <button id="findPathBtn" class="btn btn-primary">Find Shortest Path</button>
+                            <button id="newGraphBtn" class="btn btn-secondary">Generate New Graph</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header bg-success text-white">
+                        <h5 class="mb-0">Result</h5>
+                    </div>
+                    <div class="card-body">
+                        <div id="result">
+                            <p>Select start and end nodes, then click "Find Shortest Path".</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card mb-4">
+            <div class="card-header bg-info text-white">
+                <h5 class="mb-0">Graph Visualization</h5>
+            </div>
+            <div class="card-body text-center">
+                <div id="graph-container">
+                    <img id="graph-image" src="data:image/png;base64,{{ graph_image }}" class="img-fluid" alt="Graph Visualization">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // บันทึกข้อมูลกราฟจาก Flask
+        const graphData = {{ graph_data|safe }};
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
